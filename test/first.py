@@ -8,5 +8,5 @@ class Person:
 class Student(Person):
     pass
 
-x=Student("Mike")
+x=Student("Mikel")
 x.printname()
