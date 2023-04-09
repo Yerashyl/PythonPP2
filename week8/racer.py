@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import random, time
 
-#initiliaze 
+#initiliaze
 pygame.init()
 
 #making FPS variable 
@@ -42,7 +42,7 @@ class Coin(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("week8/images/coin_gold_racer.png")
         self.rect = self.image.get_rect()
-        self.rect.center=(random.randint(200,SCREEN_WIDTH-200),0)
+        self.rect.center = (random.randint(200,SCREEN_WIDTH-200),0)
     #move of coin
     def move(self):
         self.rect.move_ip(0,SPEED)
