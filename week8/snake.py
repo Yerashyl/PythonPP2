@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -28,6 +29,7 @@ bg = pygame.image.load("week8/images/snake_bg.png")
 # Set the clock for the game
 clock = pygame.time.Clock()
 font = pygame.font.Font("week8/Fonts/Lato-Black.ttf", 40)
+game_over = font.render("Game Over", True, BLUE)
 
 
 # Define the Snake class
@@ -63,10 +65,24 @@ class Snake(pygame.sprite.Sprite):
         for segment in self.segments[5:]:
             if self.rect.colliderect(segment):
                 # the snake has collided with itself, so end the game
+                screen.fill(RED)
+                screen.blit(game_over, (200,250))
+                screen.blit(level_counter, (230, 300))
+                pygame.display.update()
+                for entity in all_sprites:
+                    entity.kill() 
+                time.sleep(2)
                 exit()
         # check if the snake has collided with the walls
         if self.rect.left < 30 or self.rect.right > W - 30 or self.rect.top < 100 or self.rect.bottom > H - 30:
             # the snake has collided with the walls, so end the game
+            screen.fill(RED)
+            screen.blit(game_over, (200,250))
+            screen.blit(level_counter, (230, 300))
+            pygame.display.update()
+            for entity in all_sprites:
+                entity.kill() 
+            time.sleep(2)
             exit()
 
     def grow(self):
